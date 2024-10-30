@@ -14,7 +14,7 @@ SRC:= main.cpp\
 OBJ:= $(SRC:.cpp=.o)
 
 #Name.
-NAME:= formsign
+NAME:= form_management
 
 all:$(NAME)
 
