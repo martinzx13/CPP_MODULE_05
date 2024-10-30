@@ -4,7 +4,7 @@
 
 int main() {
 
-  // Grade to low.
+  // Grade to high.
   try {
     Bureaucrat president("Bure", 3);
     std::cout << GREEN << president << RESET << std::endl;
@@ -24,7 +24,7 @@ int main() {
     std::cerr << RED << e.what() << RESET << std::endl;
   }
 
-  // Grade to High
+  // Grade to low
   try {
     Bureaucrat president("Bure", 148);
     std::cout << president << std::endl;
