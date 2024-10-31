@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 // ____________________________Constructor and Destructor.
 
@@ -12,7 +13,8 @@ Bureaucrat::Bureaucrat(std::string const &name, int const &grade)
     throw(GradeTooLowException());
   if (grade < 1)
     throw(GradeTooHighException());
-  std::cout << "Bureaucrat Constructor 👨‍💼" << std::endl;
+  std::cout << "Bureaucrat Constructor 👨‍💼\n"
+            << YELLOW << _name << RESET << ": Created." << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &_other)
@@ -36,9 +38,11 @@ std::ostream &operator<<(std::ostream &out, const Bureaucrat &_other) {
 
 void Bureaucrat::signForm(Form &form) {
 
-  form.getIsSigned() ? std::cout << _name << " signed ✅\n" << form.getName()
-                     : std::cout << _name << " could not sign 🚫 " << form.getName()
-                                 << "\nbecause " << "Grade to low 🪫" << std::endl;
+  form.getIsSigned() ? std::cout << _name << " signed ✅\n"
+                                 << form.getName()
+                     : std::cout << _name << " could not sign 🚫 "
+                                 << form.getName() << "\nbecause "
+                                 << "Grade to low 🪫" << std::endl;
 }
 //________________________ Getter.
 

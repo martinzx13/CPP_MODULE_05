@@ -1,4 +1,5 @@
 #include "Bureaucrat.hpp"
+#include "AForm.hpp"
 
 Bureaucrat::Bureaucrat() : _name(""), _grade(150) {
   std::cout << "Default Constructor" << std::endl;
@@ -10,7 +11,8 @@ Bureaucrat::Bureaucrat(std::string const &name, int const &grade)
     throw(GradeTooLowException());
   if (grade < 1)
     throw(GradeTooHighException());
-  std::cout << "Bureaucrat Constructor 👨‍💼" << std::endl;
+  std::cout << "Bureaucrat Constructor\n"
+            << YELLOW << _name << RESET << ": Created. 👨‍⚖️" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &_other)
@@ -32,11 +34,16 @@ std::ostream &operator<<(std::ostream &out, const Bureaucrat &_other) {
   return out;
 }
 
+//________________________ Actions.
 void Bureaucrat::signForm(const AForm &form) {
 
   form.getIsSigned() ? std::cout << _name << " signed ✅\n" << form.getName()
                      : std::cout << _name << " could not sign 🚫 " << form.getName()
                                  << "\nbecause " << "Grade to low 🪫" << std::endl;
+}
+void Bureaucrat::executeForm(const AForm &form)
+{
+  form.execute(*this);
 }
 //________________________ Getter.
 

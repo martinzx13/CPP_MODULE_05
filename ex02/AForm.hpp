@@ -6,15 +6,15 @@
 #include <ostream>
 #include <string>
 
-#define RESET   "\033[0m"
-#define RED     "\033[31m"
-#define GREEN   "\033[32m"
-#define YELLOW  "\033[33m"
-#define BLUE    "\033[34m"
+#define RESET "\033[0m"
+#define RED "\033[31m"
+#define GREEN "\033[32m"
+#define YELLOW "\033[33m"
+#define BLUE "\033[34m"
 #define MAGENTA "\033[35m"
-#define CYAN    "\033[36m"
-#define WHITE   "\033[37m"
-#define BOLD    "\033[1m"
+#define CYAN "\033[36m"
+#define WHITE "\033[37m"
+#define BOLD "\033[1m"
 #define UNDERLINE "\033[4m"
 
 class Bureaucrat;
@@ -30,14 +30,14 @@ public:
   //___________ Canonical form;
   AForm();
   AForm(const std::string &name, int const &signGrade, const int &excGrade);
-  AForm(const AForm &_otherForm);
+  AForm(AForm const &_otherForm);
   AForm &operator=(const AForm &_other);
   ~AForm();
 
   //___________ Getters;
   std::string const getName() const;
-  const int getGrageToSign() const;
-  const int getGradeToExec() const;
+  int getGradeToSign() const;
+  int getGradeToExec() const;
   bool getIsSigned() const;
 
   //____________ Exceptions.
@@ -50,7 +50,8 @@ public:
   };
 
   // ___________ other
-  virtual void beSigned(const Bureaucrat &bury) = 0;
+  void beSigned(const Bureaucrat &bury);
+  virtual void execute(Bureaucrat const &executor) const = 0;
 };
 
 std::ostream &operator<<(std::ostream &out, const AForm &_form);

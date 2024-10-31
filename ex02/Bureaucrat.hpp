@@ -5,43 +5,42 @@
 #include <exception>
 #include <iostream>
 
-class Bureaucrat{
-    private:
-    std::string const _name;
-    int _grade;
+class Bureaucrat {
+private:
+  std::string const _name;
+  int _grade;
 
-    public:
-    //_______________ Canonical Form.
-    Bureaucrat();
-    Bureaucrat(std::string const &name, int const &grade);
-    Bureaucrat(const Bureaucrat &_other);
-    Bureaucrat &operator=(Bureaucrat const &_otherBu);
-    ~Bureaucrat();
+public:
+  //_______________ Canonical Form.
+  Bureaucrat();
+  Bureaucrat(std::string const &name, int const &grade);
+  Bureaucrat(const Bureaucrat &_other);
+  Bureaucrat &operator=(Bureaucrat const &_otherBu);
+  ~Bureaucrat();
 
-    //_______________ Getters.
-    std::string const getName() const;
-    int getGrade() const;
+  //_______________ Getters.
+  std::string const getName() const;
+  int getGrade() const;
 
-    //_______________ increment Functions.
-    void increaseGrade();
-    void decreaseGrade();
+  //_______________ increment Functions.
+  void increaseGrade();
+  void decreaseGrade();
 
-    //_______________ Exceptions Class.
-    class GradeTooHighException : std::exception{
-        public:
-        virtual const char *what() const throw();
-    };
+  //_______________ Exceptions Class.
+  class GradeTooHighException : std::exception {
+  public:
+    virtual const char *what() const throw();
+  };
 
-    class GradeTooLowException : std::exception{
-        public:
-        virtual const char *what() const throw();
-    };
-    //_______________ Form functions.
-    void signForm(const AForm &_other);
-
-
+  class GradeTooLowException : std::exception {
+  public:
+    virtual const char *what() const throw();
+  };
+  //_______________ Form functions.
+  void signForm(const AForm &_other);
+  void executeForm(AForm const & form);
 };
 
-std::ostream &operator<<(std::ostream &out,const Bureaucrat &_bury);
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &_bury);
 
 #endif
