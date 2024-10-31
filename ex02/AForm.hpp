@@ -32,7 +32,7 @@ public:
   AForm(const std::string &name, int const &signGrade, const int &excGrade);
   AForm(AForm const &_otherForm);
   AForm &operator=(const AForm &_other);
-  ~AForm();
+  virtual ~AForm();
 
   //___________ Getters;
   std::string const getName() const;
@@ -46,6 +46,7 @@ public:
     const char *what() const throw();
   };
   class GradeTooHighException : std::exception {
+  public:
     const char *what() const throw();
   };
 

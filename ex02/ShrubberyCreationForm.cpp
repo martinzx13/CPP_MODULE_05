@@ -30,17 +30,19 @@ ShrubberyCreationForm::operator=(const ShrubberyCreationForm &_other) {
 }
 
 std::string ShrubberyCreationForm::getTarget() const { return (_target); }
+
 void ShrubberyCreationForm::execute(const Bureaucrat &executor) const {
   if (this->getIsSigned() ? false : true) {
     std::cout << "Contract Not Signed" << std::endl;
     return;
   }
   (executor.getGrade() <= this->getGradeToExec())
-      ? std::cout << executor.getName() << " executed " << this->getName()
-                  << std::endl
+      ? createFile()
       : throw(GradeTooLowException());
+}
 
-  std::ofstream outfile(this->getTarget().append("__shrubbery").c_str());
+void ShrubberyCreationForm::createFile() const {
+  std::ofstream outfile(getTarget().append("__shrubbery").c_str());
   if (outfile.is_open() == false)
     return;
 

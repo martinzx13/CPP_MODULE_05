@@ -2,6 +2,7 @@
 #define SHRUBBERYCREATIONFORM_HPP
 
 #include "AForm.hpp"
+#include <ostream>
 
 
 // ShrubberyCreationForm: Required grades: sign 145, exec 137
@@ -24,7 +25,10 @@ class ShrubberyCreationForm : public AForm {
     std::string getTarget() const;
 
     // _______________________ Excecutor.
+    void createFile() const;
     void execute(const Bureaucrat & executor) const;
 };
+
+std::ostream &operator<<(std::ostream &_out ,const ShrubberyCreationForm &_form);
 
 #endif
