@@ -1,5 +1,6 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
+#include <exception>
 
 Bureaucrat::Bureaucrat() : _name(""), _grade(150) {
   std::cout << "Default Constructor" << std::endl;
@@ -12,7 +13,8 @@ Bureaucrat::Bureaucrat(std::string const &name, int const &grade)
   if (grade < 1)
     throw(GradeTooHighException());
   std::cout << "Bureaucrat Constructor\n"
-            << YELLOW << _name << RESET << ": Created. 👨‍⚖️" << std::endl;
+            << YELLOW << _name << RESET << ": Created. 👨‍⚖️"
+            << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &_other)
@@ -35,16 +37,17 @@ std::ostream &operator<<(std::ostream &out, const Bureaucrat &_other) {
 }
 
 //________________________ Actions.
-void Bureaucrat::signForm(const AForm &form) {
+void Bureaucrat::signForm(AForm &form) {
 
-  form.getIsSigned() ? std::cout << _name << " signed ✅\n" << form.getName()
-                     : std::cout << _name << " could not sign 🚫 " << form.getName()
-                                 << "\nbecause " << "Grade to low 🪫" << std::endl;
+  try {
+    form.beSigned(*this);
+    std::cout << _name << " signed ✅\n" << form.getName();
+  } catch (std::exception &e) {
+    std::cout << _name << " could not sign 🚫 " << form.getName()
+              << "\nbecause " << e.what() << std::endl;
+  }
 }
-void Bureaucrat::executeForm(const AForm &form)
-{
-  form.execute(*this);
-}
+void Bureaucrat::executeForm(const AForm &form) { form.execute(*this); }
 //________________________ Getter.
 
 std::string const Bureaucrat::getName() const { return (_name); }
