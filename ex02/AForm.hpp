@@ -45,11 +45,16 @@ public:
   public:
     const char *what() const throw();
   };
+
   class GradeTooHighException : std::exception {
   public:
     const char *what() const throw();
   };
 
+  class ContractFormNotSignedException : std::exception {
+  public:
+    const char *what() const throw();
+  };
   // ___________ other
   void beSigned(const Bureaucrat &bury);
   virtual void execute(Bureaucrat const &executor) const = 0;

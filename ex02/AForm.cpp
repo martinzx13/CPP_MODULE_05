@@ -51,6 +51,9 @@ const char *AForm::GradeTooLowException::what() const throw() {
   return ("Grade to low");
 }
 
+const char *AForm::ContractFormNotSignedException::what() const throw(){
+  return ("Contract is not signed");
+}
 //_______________________ Operator
 
 std::ostream &operator<<(std::ostream &out, const AForm *_form) {
@@ -63,7 +66,7 @@ std::ostream &operator<<(std::ostream &out, const AForm *_form) {
   return (out);
 }
 
-void AForm::beSigned(const Bureaucrat &_Bur) {
+void AForm::beSigned(const Bureaucrat &_Bur) const {
   (_Bur.getGrade() <= _gradeToSign) ? (_isSigned = true)
                                     : throw(GradeTooLowException());
 }
