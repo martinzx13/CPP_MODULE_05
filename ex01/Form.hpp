@@ -31,7 +31,8 @@ public:
   Form(const Form &_other);
   Form &operator=(const Form &_other);
   ~Form();
-  //
+  
+  //_____________ Exceptions.
 
   class GradeTooHighException : std::exception {
   public:
