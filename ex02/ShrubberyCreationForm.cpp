@@ -4,6 +4,8 @@
 #include <fstream>
 #include <string>
 
+//___________________________ Cannonical Form.
+
 ShrubberyCreationForm::ShrubberyCreationForm()
     : AForm("ShrubberyCreationForm", 145, 137), _target("") {
   std::cout << "Default ShrubberyCreationForm Constructor " << std::endl;
@@ -21,6 +23,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(
   std::cout << MAGENTA << "Copy Constructor ShrubberyCreationForm\n"
             << RESET << std::endl;
 }
+ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
 ShrubberyCreationForm &
 ShrubberyCreationForm::operator=(const ShrubberyCreationForm &_other) {
@@ -32,7 +35,7 @@ ShrubberyCreationForm::operator=(const ShrubberyCreationForm &_other) {
 std::string ShrubberyCreationForm::getTarget() const { return (_target); }
 
 void ShrubberyCreationForm::execute(const Bureaucrat &executor) const {
-  if (this->getIsSigned() ? false : true) {
+  if (this->getIsSigned() == false) {
     std::cout << "Contract Not Signed" << std::endl;
     return;
   }
@@ -70,6 +73,6 @@ void ShrubberyCreationForm::createFile() const {
   outfile << "   .....///////||||||||\\\\\\" << std::endl;
 
   outfile.close();
-  std::cout << GREEN << "Output File Create and close successfully " << RESET
+  std::cout << GREEN << "\nOutput File Create and close successfully " << RESET
             << std::endl;
 }

@@ -20,7 +20,7 @@ class ShrubberyCreationForm : public AForm {
     ShrubberyCreationForm(std::string const &tarjet);
     ShrubberyCreationForm(const ShrubberyCreationForm &_other);
     ShrubberyCreationForm &operator=(const ShrubberyCreationForm &_other);
-
+    ~ShrubberyCreationForm();
     // _______________________ Getter.
     std::string getTarget() const;
 

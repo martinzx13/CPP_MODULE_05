@@ -9,7 +9,21 @@
 
 class RobotomyRequestForm : public AForm{
     private:
+    const std::string _target;
+
     public:
+    //____________________ Canonical Form.
+    RobotomyRequestForm();
+    RobotomyRequestForm(const std::string &target);
+    RobotomyRequestForm(const RobotomyRequestForm &_other);
+    RobotomyRequestForm &operator=(const RobotomyRequestForm &_other);
+    ~RobotomyRequestForm();
+    //____________________ Getters.
+    std::string getTarget() const;
+
+    //____________________ execute.
+    void execute(Bureaucrat const &executor) const;
 };
+std::ostream &operator<<(std::ostream &_out ,const RobotomyRequestForm &_form);
 
 #endif
