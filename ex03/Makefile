@@ -15,7 +15,7 @@ SRC:= AForm.cpp \
 
 OBJ:= $(SRC:.cpp=.o)
 
-NAME:= aform
+NAME:= bureaucracy
 
 all:$(NAME)
 
