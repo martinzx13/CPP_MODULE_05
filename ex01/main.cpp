@@ -12,12 +12,13 @@ int main() {
     Form testamento("testamenth", 45, 2);
     std::cout << testamento << std::endl;
     secretary.signForm(testamento);
+    testamento.beSigned(secretary);
     std::cout << "\n" << testamento << std::endl;
   } catch (std::exception &e) {
     std::cout << RED << "Error : " << RESET << e.what() << std::endl;
   }
 
-  // User can sign
+  // // User can sign
   std::cout << "\n_________Test Two _________\n" << std::endl;
 
   try {
