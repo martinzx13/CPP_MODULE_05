@@ -17,6 +17,8 @@
 #define BOLD "\033[1m"
 #define UNDERLINE "\033[4m"
 
+#include <cstdlib>
+
 class Bureaucrat;
 
 class AForm {
@@ -41,20 +43,16 @@ public:
   bool getIsSigned() const;
 
   //____________ Exceptions.
-  class GradeTooLowException : std::exception {
+  class GradeTooLowException : public std::exception {
   public:
     const char *what() const throw();
   };
 
-  class GradeTooHighException : std::exception {
+  class GradeTooHighException : public std::exception {
   public:
     const char *what() const throw();
   };
-
-  class ContractFormNotSignedException : std::exception {
-  public:
-    const char *what() const throw();
-  };
+  
   // ___________ other
   void beSigned(const Bureaucrat &bury);
   virtual void execute(Bureaucrat const &executor) const = 0;
