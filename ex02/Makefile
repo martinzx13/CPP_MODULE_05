@@ -14,7 +14,7 @@ SRC:= AForm.cpp \
 
 OBJ:= $(SRC:.cpp=.o)
 
-NAME:= aform
+NAME:= advance_forms
 
 all:$(NAME)
 

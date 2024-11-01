@@ -83,6 +83,11 @@ int main() {
   }
 
   delete contract;
+  delete contract1;
+  delete contract2;
   delete testament;
+  delete testament1;
+  delete testament2;
+
   return 0;
 }
