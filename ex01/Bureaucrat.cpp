@@ -1,5 +1,6 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
+#include <exception>
 
 // ____________________________Constructor and Destructor.
 
@@ -38,11 +39,13 @@ std::ostream &operator<<(std::ostream &out, const Bureaucrat &_other) {
 
 void Bureaucrat::signForm(Form &form) {
 
-  form.getIsSigned() ? std::cout << _name << " signed ✅\n"
-                                 << form.getName()
-                     : std::cout << _name << " could not sign 🚫 "
-                                 << form.getName() << "\nbecause "
-                                 << "Grade to low 🪫" << std::endl;
+  try {
+    form.beSigned(*this);
+    std::cout << _name << " signed ✅\n" << form.getName();
+  } catch (Form::GradeTooLowException &e) {
+    std::cout << _name << " could not sign 🚫 " << form.getName()
+              << "\nbecause " << RED << e.what() << "🪫" << std::endl;
+  }
 }
 //________________________ Getter.
 
